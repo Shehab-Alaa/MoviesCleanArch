@@ -2,20 +2,13 @@ package com.example.firstkotilnapp.data.model.api
 
 import com.example.firstkotilnapp.data.model.db.Movie
 import com.google.gson.annotations.SerializedName
-import java.io.Serializable
 
-class DataResponse : Serializable {
-
+data class DataResponse(
+    val page: Int,
     @SerializedName("results")
-    var movies: List<Movie>? = null
-
-    @SerializedName("page")
-    var page: Int? = null
-
-    @SerializedName("total_results")
-    var totalResults: Int? = null
-
+    val movieList: List<Movie>,
     @SerializedName("total_pages")
-    var totalPages: Int? = null
-
-}
+    val totalPages: Int,
+    @SerializedName("total_results")
+    val totalResults: Int
+)

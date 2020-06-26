@@ -1,7 +1,6 @@
 package com.example.firstkotilnapp.ui.movie
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -12,7 +11,7 @@ import com.example.firstkotilnapp.R
 import com.example.firstkotilnapp.data.model.db.Movie
 import com.example.firstkotilnapp.databinding.ListItemBinding
 
-class MoviesAdapter(val context:Context, var moviesList : List<Movie>) : PagedListAdapter<Movie,MoviesAdapter.MoviesViewHolder>(MovieDiffCallback()) {
+class MoviesAdapter(val context:Context) : PagedListAdapter<Movie,MoviesAdapter.MoviesViewHolder>(MovieDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         return MoviesViewHolder(DataBindingUtil.inflate(
@@ -24,17 +23,9 @@ class MoviesAdapter(val context:Context, var moviesList : List<Movie>) : PagedLi
         )
     }
 
-    override fun getItemCount(): Int {
-        return moviesList.size
-    }
 
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
-        holder.onBind(moviesList[position])
-    }
-
-    fun addItems(movies: List<Movie>){
-        movies?.let { this.moviesList = it }
-        notifyDataSetChanged()
+        getItem(position)?.let { holder.onBind(it) }
     }
 
     class MovieDiffCallback : DiffUtil.ItemCallback<Movie>() {
@@ -47,7 +38,7 @@ class MoviesAdapter(val context:Context, var moviesList : List<Movie>) : PagedLi
         }
     }
 
-    inner class MoviesViewHolder(var listItemBinding: ListItemBinding) : RecyclerView.ViewHolder(listItemBinding.root){
+    class MoviesViewHolder(var listItemBinding: ListItemBinding) : RecyclerView.ViewHolder(listItemBinding.root){
 
         private lateinit var itemViewModel: ItemViewModel
 

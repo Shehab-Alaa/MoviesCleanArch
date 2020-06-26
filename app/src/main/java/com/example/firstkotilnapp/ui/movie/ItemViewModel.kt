@@ -4,5 +4,7 @@ import com.example.firstkotilnapp.data.model.db.Movie
 
 
 class ItemViewModel(movie: Movie) {
-    val movieTitle : String? = movie.title
+    val moviePoster = movie.posterPath
+    val movieTitle = movie.title
+    val movieReleaseDate = movie.releaseDate
 }

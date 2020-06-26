@@ -1,5 +1,7 @@
 package com.example.firstkotilnapp.ui.movie
 
+import android.util.Log
+import androidx.arch.core.util.Function
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import com.example.firstkotilnapp.data.model.db.Movie
@@ -17,4 +19,6 @@ class MovieDataSourceFactory(private val apiService: ApiService ,private val com
         moviesLiveDataSource.postValue(movieDataSource)
         return movieDataSource
     }
+
+
 }

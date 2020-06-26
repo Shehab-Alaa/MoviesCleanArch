@@ -1,9 +1,7 @@
 package com.example.firstkotilnapp.ui.movie
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import androidx.paging.PagedList
 import com.example.firstkotilnapp.data.DataManager
 import com.example.firstkotilnapp.data.model.api.DataResponse
@@ -18,14 +16,11 @@ import retrofit2.Response
 class MoviesViewModel(private val dataManager: DataManager) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
-    private val movies = MutableLiveData<PagedList<Movie>>()
 
-    val moviesList: LiveData<PagedList<Movie>>
-        get() = movies
-
-    init {
-        movies.value = dataManager.getApiRepository().fetchLiveMoviePagedList(compositeDisposable).value
+    val moviesPagedList : LiveData<PagedList<Movie>> by lazy{
+        dataManager.getApiRepository().fetchLiveMoviePagedList(compositeDisposable)
     }
+
 
     override fun onCleared() {
         super.onCleared()

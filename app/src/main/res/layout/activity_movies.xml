@@ -10,16 +10,18 @@
             type="com.example.firstkotilnapp.ui.movie.MoviesViewModel" />
     </data>
 
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.movie.MoviesActivity">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:adapterList="@{moviesViewModel.moviesList}"
+        android:adapterList="@{moviesViewModel.moviesPagedList}"
         tools:listitem="@layout/list_item">
     </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>
