@@ -69,4 +69,11 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.11'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
+    // Koin for Android
+    implementation "org.koin:koin-android:2.0.1"
+    // Koin Android Scope feature
+    implementation "org.koin:koin-android-scope:2.0.1"
+    // Koin Android ViewModel feature
+    implementation "org.koin:koin-android-viewmodel:2.0.1"
+
 }

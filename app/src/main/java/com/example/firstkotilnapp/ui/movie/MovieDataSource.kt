@@ -8,11 +8,14 @@ import com.example.firstkotilnapp.utils.AppConstants
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-class MovieDataSource(private val apiService: ApiService, private val compositeDisposable: CompositeDisposable)
-    : PageKeyedDataSource<Int, Movie>()
+class MovieDataSource(private val compositeDisposable: CompositeDisposable)
+    : PageKeyedDataSource<Int, Movie>() , KoinComponent
 {
 
+    private val apiService : ApiService by inject()
     private val page = AppConstants.FIRST_PAGE
 
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Movie>) {

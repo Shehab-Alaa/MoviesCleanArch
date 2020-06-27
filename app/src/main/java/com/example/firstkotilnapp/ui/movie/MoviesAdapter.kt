@@ -23,7 +23,6 @@ class MoviesAdapter(val context:Context) : PagedListAdapter<Movie,MoviesAdapter.
         )
     }
 
-
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
         getItem(position)?.let { holder.onBind(it) }
     }

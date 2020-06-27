@@ -9,17 +9,17 @@ import com.example.firstkotilnapp.R
 import com.example.firstkotilnapp.data.DataManager
 import com.example.firstkotilnapp.databinding.ActivityMoviesBinding
 import com.example.firstkotilnapp.ui.ViewModelsFactory
+import org.koin.android.ext.android.inject
 
 class MoviesActivity : AppCompatActivity() {
 
-    private lateinit var viewModelsFactory: ViewModelsFactory
+    private val viewModelsFactory: ViewModelsFactory by inject()
     private lateinit var viewModel: MoviesViewModel
     private lateinit var activityMoviesBinding: ActivityMoviesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModelsFactory = ViewModelsFactory(DataManager())
         viewModel = ViewModelProvider(this,viewModelsFactory).get(MoviesViewModel::class.java)
 
         activityMoviesBinding = DataBindingUtil.setContentView(this , R.layout.activity_movies)
