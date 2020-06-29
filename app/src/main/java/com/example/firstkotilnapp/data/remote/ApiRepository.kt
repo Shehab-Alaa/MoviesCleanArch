@@ -1,13 +1,11 @@
 package com.example.firstkotilnapp.data.remote
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.example.firstkotilnapp.data.model.db.Movie
 import com.example.firstkotilnapp.ui.movie.MovieDataSourceFactory
 import com.example.firstkotilnapp.utils.AppConstants
-import io.reactivex.disposables.CompositeDisposable
 
 
 class ApiRepository {
@@ -15,10 +13,10 @@ class ApiRepository {
     lateinit var moviePagedList: LiveData<PagedList<Movie>>
     lateinit var moviesDataSourceFactory: MovieDataSourceFactory
 
-    fun fetchLiveMoviePagedList (compositeDisposable: CompositeDisposable) : LiveData<PagedList<Movie>> {
+    fun fetchLiveMoviePagedList () : LiveData<PagedList<Movie>> {
 
         //val apiService: ApiService = ApiClient.getApiClient()!!
-        moviesDataSourceFactory = MovieDataSourceFactory(compositeDisposable)
+        moviesDataSourceFactory = MovieDataSourceFactory()
 
         val config = PagedList.Config.Builder()
             .setEnablePlaceholders(false)
@@ -26,8 +24,6 @@ class ApiRepository {
             .build()
 
         moviePagedList = LivePagedListBuilder(moviesDataSourceFactory, config).build()
-
-        Log.i("Here" , "REPO")
 
         return moviePagedList
     }

@@ -16,13 +16,13 @@
     android:layout_height="match_parent"
     tools:context=".ui.movie.MoviesActivity">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adapterList="@{moviesViewModel.moviesPagedList}"
-        tools:listitem="@layout/list_item">
+        tools:listitem="@layout/list_item"
+        android:scrollbars="vertical">
     </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>
 

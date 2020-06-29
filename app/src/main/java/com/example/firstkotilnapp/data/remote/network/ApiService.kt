@@ -9,12 +9,12 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET("/3/movie/{category}")
-    fun getMovies(
+    @GET(ApiEndPoint.END_POINT_TMDB)
+    suspend fun getMovies(
         @Path("category") category: String?,
         @Query("api_key") apiKey: String?,
         @Query("language") language: String?,
         @Query("page") page: Int
-    ): Single<DataResponse>
+    ): DataResponse
 
 }
